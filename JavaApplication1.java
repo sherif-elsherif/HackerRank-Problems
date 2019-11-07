@@ -6,29 +6,32 @@ import java.util.Scanner;
  */
 public class JavaApplication1 {
 
-    static int min_diff=1000000000;
+    static int pairs=0;
     public static void main(String[] args) {
 
         System.out.println("Testing...");
         Scanner scanner = new Scanner(System.in);
         int len = scanner.nextInt();
-        if (len < 2 || len > 100)
+        if (len < 1 || len > 100)
             throw new IllegalArgumentException("Invalid arr Length");
-        long[] arr = new long[len];
+        int[] arr = new int[len];
         for(int i =0;i<len;i++)
-            arr[i]=scanner.nextLong();
-        getMinAbsDiff(arr, len);
-        System.out.println("Min Abs Diff: "+min_diff);
+            arr[i]=scanner.nextInt();
+        getPairsCount(arr);
+        System.out.println("Pairs Count: "+pairs);
 
     }
-    static void getMinAbsDiff(long[] arr, int len)
+    static void getPairsCount(int[] arr)
     {
+        int len = arr.length;
         for(int i=0;i<len;i++)
             for(int j=i+1;j<len;j++)
-            {
-                int diff = (int) Math.abs(arr[i] - arr[j]);
-                if (diff < min_diff)
-                    min_diff = diff;
-            }
+                if(arr[i] == arr[j] && arr[i] != -1)
+                {
+                    arr[i]=-1;
+                    arr[j] =-1;
+                    pairs ++;
+                    getPairsCount(arr);
+                }
     }
 }
