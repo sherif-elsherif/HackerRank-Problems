@@ -1,5 +1,7 @@
 import math
 
+# You can check the problem description on HackerRank using the following link
+# https://www.hackerrank.com/challenges/sherlock-and-squares/problem?h_r=next-challenge&h_v=zen
 
 def squares(a, b):
     start = math.floor(math.sqrt(a))
